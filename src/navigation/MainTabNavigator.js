@@ -1,16 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
-import { View, Text, Dimensions } from 'react-native';
-import { COLORS, ICONS, scaleFont } from '../utils/constants';
+import HomeScreen from '../screens/main/HomeScreen';
+import InboxScreen from '../screens/main/InboxScreen';
+import ChatScreen from '../screens/main/ChatScreen';
+import CallScreen from '../screens/main/CallScreen';
+import ProfileScreen from '../screens/main/ProfileScreen';
+import MaybeLikesScreen from '../screens/main/MaybeLikesScreen';
+import { Dimensions } from 'react-native';
+import { COLORS, ICONS } from '../utils/constants';
 
-const Tab = createBottomTabNavigator();
 const { width } = Dimensions.get('window');
-
-const PlaceholderScreen = ({ name }) => (
-  <View className="flex-1 bg-[#000000] justify-center items-center">
-    <Text className="text-[#ffffff] font-roboto-bold" style={{ fontSize: scaleFont(24) }}>{name}</Text>
-  </View>
-);
+const Tab = createBottomTabNavigator();
 
 export const MainTabNavigator = () => (
   <Tab.Navigator
@@ -22,27 +22,28 @@ export const MainTabNavigator = () => (
   >
     <Tab.Screen
       name="Home"
-      component={PlaceholderScreen}
-      initialParams={{ name: 'Home Screen' }}
+      component={HomeScreen}
       options={{ tabBarIcon: ({ color }) => <Feather name="home" size={ICONS.size} color={color} /> }}
     />
     <Tab.Screen
       name="Inbox"
-      component={PlaceholderScreen}
-      initialParams={{ name: 'Inbox Screen' }}
+      component={InboxScreen}
       options={{ tabBarIcon: ({ color }) => <Feather name="message-circle" size={ICONS.size} color={color} /> }}
     />
     <Tab.Screen
       name="Calls"
-      component={PlaceholderScreen}
-      initialParams={{ name: 'Calls Screen' }}
+      component={CallScreen}
       options={{ tabBarIcon: ({ color }) => <Feather name="phone" size={ICONS.size} color={color} /> }}
     />
     <Tab.Screen
       name="Profile"
-      component={PlaceholderScreen}
-      initialParams={{ name: 'Profile Screen' }}
+      component={ProfileScreen}
       options={{ tabBarIcon: ({ color }) => <Feather name="user" size={ICONS.size} color={color} /> }}
+    />
+    <Tab.Screen
+      name="MaybeLikes"
+      component={MaybeLikesScreen}
+      options={{ tabBarIcon: ({ color }) => <Feather name="star" size={ICONS.size} color={color} /> }}
     />
   </Tab.Navigator>
 );
