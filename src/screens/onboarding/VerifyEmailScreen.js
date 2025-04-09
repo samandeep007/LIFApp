@@ -1,5 +1,6 @@
-import { View, Text, Dimensions } from 'react-native';
-import { Button, Toast } from '../../components/common/index.js'// Fixed path
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { Button } from '../../components/common';
+import Toast from '../../components/common/Toast'; // Default import
 import { COLORS, scaleFont } from '../../utils/constants';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
@@ -17,13 +18,8 @@ const VerifyEmailScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-[#000000] p-[scaleFont(16)] justify-center items-center">
-      <Text
-        className="text-[#ffffff] font-roboto-medium mb-[scaleFont(20)]"
-        style={{ fontSize: scaleFont(16), textAlign: 'center' }}
-      >
-        Check your email to verify your account!
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.message}>Check your email to verify your account!</Text>
       <Button title="Resend Email" icon="refresh-cw" onPress={handleResend} />
       <Button
         title="Back to Login"
@@ -35,5 +31,22 @@ const VerifyEmailScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    padding: scaleFont(16),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  message: {
+    color: COLORS.secondary,
+    fontFamily: 'Roboto-Medium',
+    fontSize: scaleFont(16),
+    textAlign: 'center',
+    marginBottom: scaleFont(20),
+  },
+});
 
 export default VerifyEmailScreen;

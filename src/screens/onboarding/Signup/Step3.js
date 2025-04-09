@@ -1,7 +1,7 @@
-// src/screens/onboarding/Signup/Step3.js
-import { View, Text, Dimensions, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Input, ProgressBar, Toast } from '../../../components/common';
+import { Button, Input, ProgressBar } from '../../../components/common';
+import Toast from '../../../components/common/Toast'; // Default import
 import { COLORS, scaleFont } from '../../../utils/constants';
 import * as Location from 'expo-location';
 import { useState } from 'react';
@@ -77,7 +77,7 @@ const Step3 = ({ formData, setFormData }) => {
   };
 
   return (
-    <View className="flex-1 bg-[#000000] p-[scaleFont(16)]">
+    <View style={styles.container}>
       <ProgressBar progress={0.75} />
       <Button
         title={loading ? "Fetching..." : "Use Current Location"}
@@ -127,5 +127,13 @@ const Step3 = ({ formData, setFormData }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    padding: scaleFont(16),
+  },
+});
 
 export default Step3;

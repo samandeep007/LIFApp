@@ -1,4 +1,4 @@
-import { View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Input, ProgressBar } from '../../../components/common';
 import { COLORS, scaleFont } from '../../../utils/constants';
@@ -9,7 +9,7 @@ const Step2 = ({ formData, setFormData }) => {
   const navigation = useNavigation();
 
   return (
-    <View className="flex-1 bg-[#000000] p-[scaleFont(16)]">
+    <View style={styles.container}>
       <ProgressBar progress={0.5} />
       <Input
         placeholder="Phone"
@@ -38,5 +38,13 @@ const Step2 = ({ formData, setFormData }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    padding: scaleFont(16),
+  },
+});
 
 export default Step2;

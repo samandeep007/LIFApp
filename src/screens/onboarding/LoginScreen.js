@@ -1,6 +1,7 @@
-import { View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Input, Toast } from '../../components/common/index.js'; // Fixed path
+import { Button, Input } from '../../components/common';
+import Toast from '../../components/common/Toast'; // Default import
 import { COLORS, scaleFont } from '../../utils/constants';
 import { login } from '../../backendProxy/rest/auth';
 import { useDispatch } from 'react-redux';
@@ -28,7 +29,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-[#000000] p-[scaleFont(16)] justify-center">
+    <View style={styles.container}>
       <Input placeholder="Email" onChangeText={setEmail} value={email} />
       <Input
         placeholder="Password"
@@ -52,5 +53,14 @@ const LoginScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    padding: scaleFont(16),
+    justifyContent: 'center',
+  },
+});
 
 export default LoginScreen;

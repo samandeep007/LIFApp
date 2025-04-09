@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 
 export const RootNavigator = () => {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  console.log('isAuthenticated:', isAuthenticated); // Debug log
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {isAuthenticated ? (

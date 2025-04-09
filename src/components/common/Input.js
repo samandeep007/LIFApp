@@ -1,4 +1,4 @@
-import { TextInput, Dimensions } from 'react-native';
+import { StyleSheet, TextInput, Dimensions } from 'react-native';
 import { COLORS, scaleFont } from '../../utils/constants';
 
 const { width } = Dimensions.get('window');
@@ -10,9 +10,22 @@ const Input = ({ placeholder, onChangeText, value, secureTextEntry, style }) => 
     onChangeText={onChangeText}
     value={value}
     secureTextEntry={secureTextEntry}
-    className="w-full border-[#ffffff] border-opacity-20 rounded-[4px] text-[#ffffff] p-[scaleFont(12)] mb-[scaleFont(16)]"
-    style={{ fontSize: scaleFont(16), ...style }}
+    style={[styles.input, style]}
   />
 );
+
+const styles = StyleSheet.create({
+  input: {
+    width: '100%',
+    borderColor: COLORS.secondary,
+    borderWidth: 1,
+    borderOpacity: 0.2,
+    borderRadius: 4,
+    color: COLORS.secondary,
+    fontSize: scaleFont(16),
+    padding: scaleFont(12),
+    marginBottom: scaleFont(16),
+  },
+});
 
 export default Input;

@@ -1,4 +1,4 @@
-import { View, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
@@ -16,13 +16,25 @@ const SplashScreen = () => {
   }, [navigation]);
 
   return (
-    <View className="flex-1 bg-[#000000] items-center justify-center">
+    <View style={styles.container}>
       <StatusBar style="light" />
-      <Text className="text-[#ffffff] font-roboto-bold" style={{ fontSize: scaleFont(24) }}>
-        Love Is Free
-      </Text>
+      <Text style={styles.text}>Love Is Free</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: COLORS.secondary,
+    fontFamily: 'Roboto-Bold',
+    fontSize: scaleFont(24),
+  },
+});
 
 export default SplashScreen;

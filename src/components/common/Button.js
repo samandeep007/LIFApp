@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { triggerHaptic } from '../../utils/haptics';
@@ -12,17 +12,39 @@ const Button = ({ title, onPress, icon, style }) => {
   }));
 
   return (
-    <Animated.View style={[animatedStyle, { backgroundColor: COLORS.primary, borderRadius: 8, minWidth: width * 0.4 }, style]}>
+    <Animated.View style={[animatedStyle, styles.container, style]}>
       <TouchableOpacity
         onPressIn={() => triggerHaptic('Light')}
         onPress={onPress}
-        className="flex-row items-center justify-center p-[scaleFont(12)]"
+        style={styles.button}
       >
-        {icon && <Feather name={icon} size={ICONS.size} color={COLORS.secondary} className="mr-[scaleFont(8)]" />}
-        <Text className="text-[#ffffff] font-roboto-bold" style={{ fontSize: scaleFont(18) }}>{title}</Text>
+        {icon && <Feather name={icon} size={ICONS.size} color={COLORS.secondary} style={styles.icon} />}
+        <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.primary,
+    borderRadius: 8,
+    minWidth: width * 0.4,
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: scaleFont(12),
+  },
+  icon: {
+    marginRight: scaleFont(8),
+  },
+  title: {
+    color: COLORS.secondary,
+    fontFamily: 'Roboto-Bold',
+    fontSize: scaleFont(18),
+  },
+});
 
 export default Button;
