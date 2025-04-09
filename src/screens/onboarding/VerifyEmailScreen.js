@@ -1,5 +1,5 @@
 import { View, Text, Dimensions } from 'react-native';
-import { Button, Toast } from '../../components/common/';
+import { Button, Toast } from '../../components/common/index.js'// Fixed path
 import { COLORS, scaleFont } from '../../utils/constants';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';

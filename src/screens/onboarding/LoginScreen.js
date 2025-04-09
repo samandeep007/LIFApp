@@ -1,6 +1,6 @@
 import { View, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Input, Toast } from '../../components/common/'
+import { Button, Input, Toast } from '../../components/common/index.js'; // Fixed path
 import { COLORS, scaleFont } from '../../utils/constants';
 import { login } from '../../backendProxy/rest/auth';
 import { useDispatch } from 'react-redux';
